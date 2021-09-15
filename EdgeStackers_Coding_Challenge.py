@@ -29,8 +29,8 @@ if os.path.exists(filePath):
                         output_dict1["distance"] = l["distance"]
                     else:
                         output_dict1["distance"] = ""
-                    #time = datetime.datetime.isoformat(datetime.datetime.fromtimestamp(l["startTime"]/1e3))
-                    output_dict1["start_time"] = l["startTime"]
+                    time = datetime.datetime.isoformat(datetime.datetime.fromtimestamp(l["startTime"]))
+                    output_dict1["start_time"] = time
                     output_dict["race"].append(output_dict1)
             dict1.append(output_dict)
     print(dict1)
