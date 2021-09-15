@@ -16,11 +16,14 @@ if os.path.exists(filePath):
     for i in data["dates"]:
         for j in i["sections"]:
             for k in j["meetings"]:
+                # dictionary to hold all meetings
                 output_dict = dict()
                 output_dict["meeting_id"] = k["id"]
                 output_dict["meeting_name"] = k["name"]
                 output_dict["race"] = []
+
                 for l in k["events"]:
+                    # dictionary to hold all race events
                     output_dict1 = dict()
                     output_dict1["race_number"] = l["raceNumber"]
                     output_dict1["race_link"] = l["httpLink"]
@@ -29,6 +32,7 @@ if os.path.exists(filePath):
                         output_dict1["distance"] = l["distance"]
                     else:
                         output_dict1["distance"] = ""
+                    # converting time to required date time format
                     time = datetime.datetime.isoformat(datetime.datetime.fromtimestamp(l["startTime"]))
                     output_dict1["start_time"] = time
                     output_dict["race"].append(output_dict1)
