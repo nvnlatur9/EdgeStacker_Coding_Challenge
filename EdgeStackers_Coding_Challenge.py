@@ -20,7 +20,6 @@ if os.path.exists(filePath):
                 output_dict = dict()
                 output_dict["meeting_id"] = k["id"]
                 output_dict["meeting_name"] = k["name"]
-                output_dict["race"] = []
 
                 for l in k["events"]:
                     # dictionary to hold all race events
@@ -35,8 +34,9 @@ if os.path.exists(filePath):
                     # converting time to required date time format
                     time = datetime.datetime.isoformat(datetime.datetime.fromtimestamp(l["startTime"]))
                     output_dict1["start_time"] = time
-                    output_dict["race"].append(output_dict1)
-            dict1.append(output_dict)
+                    output_dict.update(output_dict1)
+                    #output_dict["race"].append(output_dict1)
+                    dict1.append(output_dict)
     print(dict1)
 
 else:
